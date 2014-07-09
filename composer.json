@@ -1,0 +1,23 @@
+{
+    "name": "citfact/filter.year",
+    "type": "bitrix-component",
+    "description": "Simple filtering by years and months",
+    "homepage": "https://github.com/studiofact/citfact.filter.year",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kulichkin Denis",
+            "email": "onexhovia@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-paths": {
+            "local/components/citfact/{$name}/": ["type:bitrix-component"]
+        },
+        "installer-name": "filter.year"
+    }
+}
