@@ -1,0 +1,26 @@
+.filter-year .row-one {
+    background: none repeat scroll 0 0 #1d2932;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.filter-year .row-one .item {
+    color: #fff;
+    font-weight: normal;
+    padding: 10px 8px;
+}
+.filter-year .row-one .item:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.filter-year .row-one .item.active {
+    background: none repeat scroll 0 0 #e2374b;
+    color: #fff;
+}
+.filter-year .table-emulate {
+    display: table;
+}
+.filter-year .cell-emulate {
+    display: table-cell;
+    float: none;
+}
