@@ -23,19 +23,26 @@ $filter['IBLOCK_ID'] = $arParams['IBLOCK_ID'];
 $filter['IBLOCK_TYPE'] = $arParams['IBLOCK_TYPE'];
 $filter['ACTIVE'] = 'Y';
 
-$elementListResult = CIBlockElement::GetList(array('ACTIVE_FROM' => 'DESC'), $filter, false, false, array('ID', 'ACTIVE_FROM'));
-while ($element = $elementListResult->Fetch()) {
-    $date = new DateTime($element['ACTIVE_FROM']);
-    $currentYear = $date->format('Y');
-    $currentMonth = $date->format('n');
-    $arResult['FILTER'][$currentYear][$currentMonth] = array(
-        'QUERY' => $currentMonth,
-        'VIEW' => FormatDate('f', $date->getTimestamp()),
-    );
-}
+$cacheGroups = ($arParams['CACHE_GROUPS'] == 'Y') ? $GLOBALS['USER']->GetGroups() : false;
+$cacheTime = (!isset($arParams['CACHE_TIME'])) ? $arParams['CACHE_TIME'] : 36000000;
 
-foreach ($arResult['FILTER'] as $year => $month) {
-    $arResult['FILTER'][$year] = array_reverse($month, true);
+if ($this->StartResultCache($cacheTime, $cacheGroups)) {
+    $elementListResult = CIBlockElement::GetList(array('ACTIVE_FROM' => 'DESC'), $filter, false, false, array('ID', 'ACTIVE_FROM'));
+    while ($element = $elementListResult->Fetch()) {
+        $date = new DateTime($element['ACTIVE_FROM']);
+        $currentYear = $date->format('Y');
+        $currentMonth = $date->format('n');
+        $arResult['FILTER'][$currentYear][$currentMonth] = array(
+            'QUERY' => $currentMonth,
+            'VIEW' => FormatDate('f', $date->getTimestamp()),
+        );
+    }
+
+    foreach ($arResult['FILTER'] as $year => $month) {
+        $arResult['FILTER'][$year] = array_reverse($month, true);
+    }
+
+    $this->EndResultCache();
 }
 
 $queryYear = ($request->getQuery('FILTER_YEAR')) ?: 0;

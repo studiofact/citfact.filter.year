@@ -14,3 +14,4 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 $MESS['IBLOCK_ID'] = 'ID инфоблока';
 $MESS['IBLOCK_TYPE'] = 'Тип инфоблока';
 $MESS['FILTER_NAME'] = 'Название фильтра в который будут переданы параметры';
+$MESS['CACHE_GROUPS'] = 'Учитывать права доступа';

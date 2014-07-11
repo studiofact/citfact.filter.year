@@ -34,6 +34,15 @@ $arComponentParameters = array(
             'NAME' => Loc::getMessage('FILTER_NAME'),
             'TYPE' => 'STRING',
         ),
+        'CACHE_TIME' => array(
+            'DEFAULT' => 36000000
+        ),
+        'CACHE_GROUPS' => array(
+            'PARENT' => 'CACHE_SETTINGS',
+            'NAME' => Loc::getMessage('CACHE_GROUPS'),
+            'TYPE' => 'CHECKBOX',
+            'DEFAULT' => 'Y',
+        ),
     )
 );
 ?>
