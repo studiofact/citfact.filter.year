@@ -19,7 +19,7 @@
 
 ``` php
   $APPLICATION->IncludeComponent(
-      'citfact:filter.year',
+      'citfact.filter.year',
       '.default',
       array(
           'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
